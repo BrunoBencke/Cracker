@@ -1,6 +1,6 @@
 package cracker;
 
-public class SequenceAllSolutions {
+public class SequenceFirstSolution {
     
     public static int complete, partial, solution;
     
@@ -21,21 +21,23 @@ public class SequenceAllSolutions {
         return false;
     }
     
-    public static void solve(String state){
+    public static boolean solve(String state){
         if (state.length() == 5) {
             complete++;
             if (isSolution(state)) {
                 solution++;
                 System.out.println(state);
+                return true;
             }
         }else{// general case
             partial++;
-            solve(state + "a");
-            solve(state + "b");
-            solve(state + "c");
-            solve(state + "d");
-            solve(state + "e");
+            if(solve(state + "a")){ return true; }
+            if(solve(state + "b")){ return true; }
+            if(solve(state + "c")){ return true; }
+            if(solve(state + "d")){ return true; }
+            if(solve(state + "e")){ return true; }            
         }
+        return false;
     }
     
 }
